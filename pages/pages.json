@@ -124,7 +124,8 @@
       "props": {
         "elements": [
           "carousel",
-          "shelf"
+          "shelf",
+          "countdownshowcase"
         ]
       },
       "extensions": {
@@ -133,6 +134,9 @@
         },
         "shelf": {
           "component": "vtex.shelf/Shelf"
+        },
+        "countdownshowcase": {
+          "component": "CountdownShowcase"
         }
       }
     },
