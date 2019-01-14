@@ -1,4 +1,4 @@
-import * as React from 'react';
+import React, { Component, ReactNode } from 'react'
 import * as PropTypes from 'prop-types';
 import { Link, withRuntimeContext } from 'render';
 
@@ -32,7 +32,12 @@ class CountdownShowcase extends Component<Props, State> {
   public static propTypes = {
     text: PropTypes.string,
     category: PropTypes.array,
-    products: PropTypes.array
+    products: PropTypes.arrayOf(
+      PropTypes.shape({
+        name: PropTypes.string,
+        price:PropTypes.number
+      })
+    )
   }
 
   public static defaultProps: DefaultProps = {
@@ -41,7 +46,7 @@ class CountdownShowcase extends Component<Props, State> {
     products:[]
   }
 
-  public static schema: React.ReactNode = {
+  public static schema: ReactNode = {
     title: 'Vitrine Regressiva',
     description: 'Prateleira com contador',
     type: 'object',
@@ -60,16 +65,32 @@ class CountdownShowcase extends Component<Props, State> {
       },
       products: {
         title: 'Produtos',
-        type: 'array'
+        type: 'array',
+        items: {
+          title: 'Produtos',
+          type: 'object',
+          properties: {
+            name: {
+                default: '',
+                title: 'Nome do Produto',
+                type: 'string',
+              },
+              price: {
+                default: '',
+                title: 'Valor do Produto',
+                type: 'number',
+              }
+          }
+        }
       }
     }
   }
 
 
-  public render():React.ReactNode {
+  public render():ReactNode {
     const { text, category } =  this.props;
-    const isMobile = this.props.runtime.hints.mobile;
-    console.log(isMobile);
+    // const isMobile = this.props.runtime.hints.mobile;
+    console.log(this.props);
     return(
       <div className="flex flex-grow-1 w-100 flex-column">
         <h1 className="center">{ text }</h1>
