@@ -1,5 +1,6 @@
-import React, { Component, ReactNode } from 'react'
-import productsQuery from './queries/productsQuery.gql'
+import React, { Component, ReactNode } from 'react';
+// import productsQuery from './queries/productsQuery.gql';
+import PropTypes from 'prop-types';
 
 
 interface Link {
@@ -21,6 +22,11 @@ interface DefaultProps {
 interface Props extends DefaultProps { }
 
 class CountdownShowcase extends Component<Props> {
+
+  public static propTypes = {
+    text: PropTypes.string,
+    categories: PropTypes.array
+  }
 
   public static defaultProps: DefaultProps = {
     text:'',
