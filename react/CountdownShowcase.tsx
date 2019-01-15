@@ -10,7 +10,8 @@ import CountdownShowcasePanel from "./components/CountdownShowcasePanel";
 interface products {
   slug: string,
   name: string,
-  price:number
+  price:number,
+  date:string
 }
 
 interface DefaultProps {
@@ -35,6 +36,7 @@ class CountdownShowcase extends Component<Props, State> {
     category: PropTypes.array,
     products: PropTypes.arrayOf(
       PropTypes.shape({
+        date: PropTypes.string,
         slug: PropTypes.string,
         name: PropTypes.string,
         price:PropTypes.number
@@ -86,6 +88,12 @@ class CountdownShowcase extends Component<Props, State> {
                 default: '',
                 title: 'Slug',
                 type: 'string',
+              },
+              date: {
+                default: '',
+                title: 'Data',
+                type: 'string',
+                format: 'date-time'
               }
           }
         }
