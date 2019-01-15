@@ -1,5 +1,5 @@
 import React, { Component, ReactNode } from 'react'
-import * as PropTypes from 'prop-types';
+import PropTypes from 'prop-types';
 import { Link, withRuntimeContext } from 'render';
 
 
@@ -8,6 +8,7 @@ import CountdownShowcasePanel from "./components/CountdownShowcasePanel";
 
 
 interface products {
+  slug: string,
   name: string,
   price:number
 }
@@ -34,6 +35,7 @@ class CountdownShowcase extends Component<Props, State> {
     category: PropTypes.array,
     products: PropTypes.arrayOf(
       PropTypes.shape({
+        slug: PropTypes.string,
         name: PropTypes.string,
         price:PropTypes.number
       })
@@ -79,6 +81,11 @@ class CountdownShowcase extends Component<Props, State> {
                 default: '',
                 title: 'Valor do Produto',
                 type: 'number',
+              },
+              slug: {
+                default: '',
+                title: 'Slug',
+                type: 'string',
               }
           }
         }
@@ -88,13 +95,11 @@ class CountdownShowcase extends Component<Props, State> {
 
 
   public render():ReactNode {
-    const { text, category } =  this.props;
-    // const isMobile = this.props.runtime.hints.mobile;
-    console.log(this.props);
+    const { text, products } =  this.props;
     return(
       <div className="flex flex-grow-1 w-100 flex-column">
         <h1 className="center">{ text }</h1>
-        <CountdownShowcasePanel category={category}/>
+        <CountdownShowcasePanel products={products}/>
       </div>
     )
   }

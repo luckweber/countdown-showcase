@@ -1,0 +1,19 @@
+query product($slug:String) {
+  product(slug:$slug) {
+    productName
+    brand
+    description
+    items {
+      sellers {
+        commertialOffer {
+          Price
+          PriceWithoutDiscount
+          AvailableQuantity
+        }
+      }
+      images {
+        imageUrl
+      }
+    }
+  }
+}

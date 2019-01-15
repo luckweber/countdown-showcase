@@ -69,3 +69,177 @@ body {
     padding-right: 1.5rem;
   }
 }
+
+
+* {
+    padding: 0;
+    margin: 0;
+}
+
+a {
+  text-decoration: none;
+}
+
+.link a {
+    color: #555555;
+}
+
+
+a:visited {
+    text-decoration: none;
+    color: #000;
+}
+
+.p {
+    color: #000;
+}
+
+.Modal-modal-0-1-3 {
+  width: 800px;
+}
+
+.DIVcontador {
+  width: 950px;
+  height: 160px;
+  margin: 10px auto;
+  position: relative;
+  font-family: 'Swis721';
+  border: 1px solid #ccc;
+  -moz-border-radius: 8px 8px 8px 8px;
+  -webkit-border-radius: 8px 8px 8px 8px;
+  -khtml-border-radius: 8px 8px 8px 8px;
+  border-radius: 8px 8px 8px 8px;
+}
+
+.contBLOCO1 {
+    float: left;
+    margin: 8px 8px 0px 8px;
+}
+
+.contadorFOTO {
+    width: 130px;
+    height: 130px;
+    display: block;
+}
+
+.contBLOCO2 {
+    float: left;
+    width: 610px;
+    height: 150px;
+}
+
+.contTITULO {
+    margin: 15px 0 15px 10px;
+    text-align: left;
+    font-size: 20px;
+    height: 40px;
+    display: block;
+    overflow: hidden;
+    padding: 2px 0;
+}
+
+
+.contDESCONTO {
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Swis721_B';
+    color: #FFF;
+    letter-spacing: -1px;
+    margin: 0 0px 0 13px;
+    float: left;
+    width: 80px;
+    height: 70px;
+    line-height: 30px;
+    background: #d50000;
+}
+
+
+.textop {
+    font-size: 11px;
+    letter-spacing: -1px;
+    padding: 0 0 2px 0;
+}
+
+.contVALOR {
+    float: left;
+    width: 230px;
+    margin: 0 0 0 20px;
+    font-size: 50px;
+    color: #000;
+    letter-spacing: -2px;
+    text-align: left;
+    font-family: 'Swis721_B';
+}
+
+.contFULL {
+    float: left;
+    width: 120px;
+    margin: 0 0 0 20px;
+    font-size: 30px;
+    color: #999;
+    letter-spacing: -1px;
+    text-align: left;
+    font-family: 'Swis721_B';
+}
+
+.contNUMEROS2 {
+    width: 100px;
+    margin: 0 0 0 15px;
+    float: right;
+    text-align: center;
+    font-family: 'Swis721_B';
+    font-size: 25px;
+}
+
+
+.contNUMEROS {
+    width: 70%;
+    margin: 0 auto;
+    text-align: center;
+    font-family: 'Swis721_B';
+    font-size: 25px;
+    padding: 5px 3px 1px 3px;
+    border: 1px solid #000;
+}
+
+.contBLOCO3 {
+    float: right;
+    width: 170px;
+    margin: 40px 5px 0 0px;
+    font-size: 50px;
+    color: #FFF;
+    font-family: 'Swis721_B';
+    letter-spacing: -3px;
+    line-height: 14px;
+}
+
+.time-ctn {
+    display: flex;
+}
+
+.flex-row {
+    flex-direction: row;
+}
+
+.contBLOCO3-texto {
+    color: #d50000;
+    font-family: 'Swis721_B';
+    letter-spacing: -1px;
+    font-size: 14px;
+}
+
+.time-ctn svg {
+    width: 25px;
+    height: 25px;
+    padding-right: 10px;
+}
+
+.contBLOCO3 svg {
+    fill: #d50000 !important;
+}
+
+.at {
+    color: #8ed200;
+    margin-top: 30px;
+    display: block;
+}
