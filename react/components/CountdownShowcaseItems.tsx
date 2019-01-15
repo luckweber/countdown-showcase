@@ -22,20 +22,50 @@ interface Props {
 }
 
 
-class CountdownShowcaseItems extends Component<Props> {
+interface State {
+  product?:any
+}
+
+
+class CountdownShowcaseItems extends Component<Props, State> {
+
+  public constructor(props:Props) {
+    super(props);
+
+    this.state = {
+      product:''
+    }
+  }
 
   public static propTypes = {
     product:PropTypes.object
   }
 
+  public componentDidMount():any {
+    try {
+      const {data}:any = this.props;
+      if(!data.loading) {
+        console.log(data);
+      }
+
+    }catch(e){
+
+    }
+  }
+
+
+  public componentWillReceiveProps(next:any) {
+    console.log(next)
+  }
+
   public render():ReactNode {
-    const {data} =  this.props;
-    const {product: {productName, items, description}} = data;
-    const item = items[0];
-    const image =  item.images[0].imageUrl;
-    const commertialOffer =  items[0].sellers[0].commertialOffer;
-    const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
-    const discount = ((( Price - PriceWithoutDiscount)/Price)*100).toFixed(1)
+    // const {data} =  this.props;
+    // const {product: {productName, items, description}} = data;
+    // const item = items[0];
+    // const image =  item.images[0].imageUrl;
+    // const commertialOffer =  items[0].sellers[0].commertialOffer;
+    // const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
+    // const discount = ((( Price - PriceWithoutDiscount)/Price)*100).toFixed(1)
 
     // console.log(Price)
 
@@ -44,27 +74,27 @@ class CountdownShowcaseItems extends Component<Props> {
         <div className="contBLOCO1">
           <div className="contadorFOTO">
             <a href="/">
-              <img alt="Headset Gamer HyperX Cloud Silver - HX-HSCL-SR/NA" width="130" src={image}/>
+              <img alt="Headset Gamer HyperX Cloud Silver - HX-HSCL-SR/NA" width="130" src={"image"}/>
             </a>
           </div>
         </div>
         <div className="contBLOCO2">
           <div className="contTITULO link">
-            <a className="ng-binding" href="https://www.kabum.com.br/produto/91099">{productName}</a>
+            <a className="ng-binding" href="https://www.kabum.com.br/produto/91099">{"productName"}</a>
           </div>
           <div className="contDESCONTO">
-            <p className="textop">DESCONTO ATÉ</p> {discount}%
+            <p className="textop">DESCONTO ATÉ</p> {30}%
           </div>
           <div className="contVALOR">
-            <p className="textop p">VALOR À VISTA NA OFERTA R$</p><FormattedNumber currency="BRL" style="currency" value={Price}/>
+            <p className="textop p">VALOR À VISTA NA OFERTA R$</p><FormattedNumber currency="BRL" style="currency" value={30}/>
           </div>
           <div className="contFULL">
-            <p className="textop p">VALOR NORMAL</p><FormattedNumber currency="BRL" style="currency" value={PriceWithoutDiscount}/>
+            <p className="textop p">VALOR NORMAL</p><FormattedNumber currency="BRL" style="currency" value={30}/>
           </div>
           <div className="contNUMEROS2">
             <p className="textop">QUANT. EM<br/>OFERTA</p>
             <div className="contNUMEROS">
-              {AvailableQuantity}
+              {5}
             </div>
           </div>
         </div>
@@ -100,7 +130,7 @@ class CountdownShowcaseItems extends Component<Props> {
 }
 
 const options = {
-  options: (data) => ({
+  options: (data:any) => ({
     variables: {
       slug:data.product.slug
     }

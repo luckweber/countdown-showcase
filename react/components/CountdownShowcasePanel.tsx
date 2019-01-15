@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react';
+import * as React  from 'react';
 import * as PropTypes from 'prop-types';
 
 
@@ -15,8 +15,20 @@ interface Props {
   products?:products[]
 }
 
+interface State {
+  products?:products[]
+}
 
-class CountdownShowcasePanel extends Component<Props> {
+
+class CountdownShowcasePanel extends React.Component<Props, State> {
+
+  constructor(props: Props) {
+    super(props)
+
+    this.state = {
+      products: []
+    }
+  }
 
   public static propTypes = {
     products: PropTypes.arrayOf(
@@ -28,10 +40,30 @@ class CountdownShowcasePanel extends Component<Props> {
     )
   }
 
-  public render():ReactNode {
-    const {products} =  this.props;
+  public componentDidMount() {
+    try {
+      const { products }:any = this.props;
+      (products.length) && (this.setState({products:products}));
+    }catch(e){
 
-    const  items = products.map(product => (<CountdownShowcaseItems product={product}/>));
+    }
+  }
+
+  public componentWillReceiveProps(next:any) {
+    try {
+      const { products } = next;
+      (products.length) && (this.setState({products:products}));
+    }catch(e){
+
+    }
+  }
+
+
+
+  public render():React.ReactNode {
+    const {products} =  this.state;
+    let productsList:any =  products;
+    const  items = productsList.map((product:any[]) => (<CountdownShowcaseItems product={product}/>));
     return(
       <div>{items}</div>
     )

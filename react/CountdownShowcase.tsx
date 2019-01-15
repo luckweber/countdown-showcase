@@ -1,4 +1,4 @@
-import React, { Component, ReactNode } from 'react'
+import * as React  from 'react';
 import PropTypes from 'prop-types';
 import { Link, withRuntimeContext } from 'render';
 
@@ -25,7 +25,7 @@ interface State {}
 
 interface Props extends DefaultProps {}
 
-class CountdownShowcase extends Component<Props, State> {
+class CountdownShowcase extends React.Component<Props, State> {
 
   constructor(props: Props) {
     super(props);
@@ -44,13 +44,14 @@ class CountdownShowcase extends Component<Props, State> {
     )
   }
 
+
   public static defaultProps: DefaultProps = {
     text:'',
     category: [],
     products:[]
   }
 
-  public static schema: ReactNode = {
+  public static schema: React.ReactNode = {
     title: 'Vitrine Regressiva',
     description: 'Prateleira com contador',
     type: 'object',
@@ -102,7 +103,7 @@ class CountdownShowcase extends Component<Props, State> {
   }
 
 
-  public render():ReactNode {
+  public render():React.ReactNode {
     const { text, products } =  this.props;
     return(
       <div className="flex flex-grow-1 w-100 flex-column">
