@@ -7,6 +7,8 @@ var IntlMixin       = ReactIntl.IntlMixin;
 var FormattedNumber = ReactIntl.FormattedNumber;
 
 
+import CountdownTimer from "./CountdownTimer"
+
 interface Props {
   product?:any
 }
@@ -21,41 +23,62 @@ class CountdownShowcaseItem extends Component<Props, State> {
 
   public render() {
 
-    console.log(this.props);
+    let  imageL  = '';
+    let productNameL = '';
+    let price =  0;
+    let priceWithoutDiscount = 0;
+    let availableQuantity = 0;
+    let discount = '';
+    let dates = new Date();
 
-    const {product: {productName, items, description}} = this.props;
-    const item = items[0];
-    const image =  item.images[0].imageUrl;
-    const commertialOffer =  items[0].sellers[0].commertialOffer;
-    const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
-    const discount = ((( Price - PriceWithoutDiscount)/Price)*100).toFixed(1)
+
+
+    try {
+
+      const {product: {productName, items, description}, date} = this.props;
+      const item = items[0];
+      const commertialOffer =  items[0].sellers[0].commertialOffer;
+      const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
+      const Discount = ((( Price - PriceWithoutDiscount)/Price)*100).toFixed(1);
+      dates = date;
+      // dates =  dates.split("T")[0];
+
+
+      price = Price;
+      priceWithoutDiscount = PriceWithoutDiscount;
+      productNameL = productName;
+      availableQuantity = AvailableQuantity;
+      imageL =  item.images[0].imageUrl;
+      discount = Discount;
+
+    }catch(e){}
 
     return(
       <div className="DIVcontador">
         <div className="contBLOCO1">
           <div className="contadorFOTO">
             <a href="/">
-              <img alt="Headset Gamer HyperX Cloud Silver - HX-HSCL-SR/NA" width="130" src={image}/>
+              <img alt="Headset Gamer HyperX Cloud Silver - HX-HSCL-SR/NA" width="130" src={imageL}/>
             </a>
           </div>
         </div>
         <div className="contBLOCO2">
           <div className="contTITULO link">
-            <a className="ng-binding" href="https://www.kabum.com.br/produto/91099">{productName}</a>
+            <a className="ng-binding" href="https://www.kabum.com.br/produto/91099">{productNameL}</a>
           </div>
           <div className="contDESCONTO">
-            <p className="textop">DESCONTO ATÉ</p> {30}%
+            <p className="textop">DESCONTO ATÉ</p> {discount}%
           </div>
           <div className="contVALOR">
-            <p className="textop p">VALOR À VISTA NA OFERTA R$</p><FormattedNumber currency="BRL" style="currency" value={Price}/>
+            <p className="textop p">VALOR À VISTA NA OFERTA R$</p><FormattedNumber currency="BRL" style="currency" value={price}/>
           </div>
           <div className="contFULL">
-            <p className="textop p">VALOR NORMAL</p><FormattedNumber currency="BRL" style="currency" value={PriceWithoutDiscount}/>
+            <p className="textop p">VALOR NORMAL</p><FormattedNumber currency="BRL" style="currency" value={priceWithoutDiscount}/>
           </div>
           <div className="contNUMEROS2">
             <p className="textop">QUANT. EM<br/>OFERTA</p>
             <div className="contNUMEROS">
-              {AvailableQuantity}
+              {availableQuantity}
             </div>
           </div>
         </div>
@@ -82,7 +105,7 @@ class CountdownShowcaseItem extends Component<Props, State> {
               <p className="contBLOCO3-texto">TEMPO RESTANTE<br/>PARA TERMINO DA OFERTA: </p>
           </div>
           <span className="at ng-scope" ng-switch-when="ativo">
-            00:00:41
+            <CountdownTimer date={dates}/>
           </span>
         </div>
       </div>

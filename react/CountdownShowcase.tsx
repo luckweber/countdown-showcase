@@ -9,8 +9,6 @@ import CountdownShowcasePanel from "./components/CountdownShowcasePanel";
 
 interface products {
   slug: string,
-  name: string,
-  price:number,
   date:string
 }
 
@@ -37,9 +35,7 @@ class CountdownShowcase extends React.Component<Props, State> {
     products: PropTypes.arrayOf(
       PropTypes.shape({
         date: PropTypes.string,
-        slug: PropTypes.string,
-        name: PropTypes.string,
-        price:PropTypes.number
+        slug: PropTypes.string
       })
     )
   }
@@ -75,16 +71,6 @@ class CountdownShowcase extends React.Component<Props, State> {
           title: 'Produtos',
           type: 'object',
           properties: {
-            name: {
-                default: '',
-                title: 'Nome do Produto',
-                type: 'string',
-              },
-              price: {
-                default: '',
-                title: 'Valor do Produto',
-                type: 'number',
-              },
               slug: {
                 default: '',
                 title: 'Slug',

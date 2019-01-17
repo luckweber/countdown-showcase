@@ -13,8 +13,7 @@ import CountdownShowcaseItem from "./CountdownShowcaseItem";
 
 interface product {
   slug: string,
-  name: string,
-  price:number
+  date:number
 }
 
 interface Props {
@@ -41,46 +40,14 @@ class CountdownShowcaseItems extends Component<Props, State> {
     product:PropTypes.object
   }
 
-  public componentDidMount():any {
-    try {
-      const {data}:any = this.props;
-      if(!data.loading) {
-        const {product} = data;
-        this.setState({product:product});
-      }
-    }catch(e){this.setState({product:''})}
-  }
-
-
-  public componentWillReceiveProps(next:any) {
-    try {
-      const {data}:any = next;
-      if(!data.loading) {
-        const {product} = data;
-        this.setState({product:product});
-      }
-    }catch(e){this.setState({product:''})}
-  }
-
   public render():ReactNode {
-    const {data:{product}}:any =  this.props;
 
-    console.log(this.props);
-    /*
-    const {data} =  this.props;
-    const {product: {productName, items, description}} = data;
-    const item = items[0];
-    const image =  item.images[0].imageUrl;
-    const commertialOffer =  items[0].sellers[0].commertialOffer;
-    const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
-    const discount = ((( Price - PriceWithoutDiscount)/Price)*100).toFixed(1)
-    */
+    const {data, product:{date}}:any =  this.props;
+    const {product} = data;
 
     return(
-      <CountdownShowcaseItem product={product}/>
+      <CountdownShowcaseItem product={product} date={date}/>
     )
-
-
   }
 }
 
