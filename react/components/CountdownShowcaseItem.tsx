@@ -29,13 +29,14 @@ class CountdownShowcaseItem extends Component<Props, State> {
     let priceWithoutDiscount = 0;
     let availableQuantity = 0;
     let discount = '';
-    let dates = new Date();
+    // let dates = new Date();
+    let dates:any = 0;
 
 
 
     try {
 
-      const {product: {productName, items, description}, date} = this.props;
+      const {product: {productName, items, description}, date}:any = this.props;
       const item = items[0];
       const commertialOffer =  items[0].sellers[0].commertialOffer;
       const {Price, PriceWithoutDiscount, AvailableQuantity} = commertialOffer;
@@ -105,7 +106,7 @@ class CountdownShowcaseItem extends Component<Props, State> {
               <p className="contBLOCO3-texto">TEMPO RESTANTE<br/>PARA TERMINO DA OFERTA: </p>
           </div>
           <span className="at ng-scope" ng-switch-when="ativo">
-            <CountdownTimer date={dates}/>
+            {(dates) && (<CountdownTimer date={dates}/>)}
           </span>
         </div>
       </div>

@@ -8,15 +8,21 @@ interface State {
   hours: number,
   min: number,
   sec: number,
+  dates:  any
 }
 
 interface DefaultProps {
-    date:string
+    date:any
 }
 
-interface Props extends DefaultProps {}
+interface Props extends DefaultProps {
+  interval: any
+
+}
 
 class CountdownTimer extends React.Component<Props, State> {
+
+  private  interval: any;
 
   public constructor(props: Props) {
     super(props);
@@ -26,8 +32,12 @@ class CountdownTimer extends React.Component<Props, State> {
       hours: 0,
       min: 0,
       sec: 0,
+      dates: ''
     }
+
   }
+
+
 
   public static propTypes = {
     date: PropTypes.string.isRequired
@@ -37,7 +47,7 @@ class CountdownTimer extends React.Component<Props, State> {
     clearInterval(this.interval);
   }
 
-  public addLeadingZeros(value) {
+  public addLeadingZeros(value:any) {
     value = String(value);
     while (value.length < 2) {
       value = '0' + value;
@@ -50,17 +60,17 @@ class CountdownTimer extends React.Component<Props, State> {
   }
 
   componentDidMount() {
-    console.log(this.props.date)
-
-    // update every second
     this.interval = setInterval(() => {
       const date = this.calculateCountdown(this.props.date);
       date ? this.setState(date) : this.stop();
     }, 1000);
   }
 
-  public calculateCountdown(endDate) {
-    let diff = (Date.parse(new Date(endDate)) - Date.parse(new Date())) / 1000;
+
+  public calculateCountdown(endDate:any) {
+    let dateInit = new Date().toString();
+    let dateFinal = new Date(endDate).toString();
+    let diff = (Date.parse(dateFinal) - Date.parse(dateInit)) / 1000;
 
     // clear countdown when date is reached
     if (diff <= 0) return false;
@@ -98,7 +108,7 @@ class CountdownTimer extends React.Component<Props, State> {
 
   public render():React.ReactNode {
     const countDown = this.state;
-    console.log(this.props)
+    // console.log(this.props)
     //{this.addLeadingZeros(countDown.days)} {countDown.days === 1 ? 'Dia' : 'Dias'}  {this.addLeadingZeros(countDown.hours)}:{this.addLeadingZeros(countDown.min)}:{this.addLeadingZeros(countDown.sec)}
 
     return(
