@@ -15,10 +15,7 @@ interface DefaultProps {
     date:any
 }
 
-interface Props extends DefaultProps {
-  interval: any
-
-}
+interface Props extends DefaultProps {}
 
 class CountdownTimer extends React.Component<Props, State> {
 
@@ -61,7 +58,7 @@ class CountdownTimer extends React.Component<Props, State> {
 
   componentDidMount() {
     this.interval = setInterval(() => {
-      const date = this.calculateCountdown(this.props.date);
+      const date:any = this.calculateCountdown(this.props.date);
       date ? this.setState(date) : this.stop();
     }, 1000);
   }

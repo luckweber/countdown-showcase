@@ -11,6 +11,7 @@ import CountdownTimer from "./CountdownTimer"
 
 interface Props {
   product?:any
+  date?:any
 }
 
 interface State {

@@ -18,6 +18,8 @@ interface product {
 
 interface Props {
   product?:product
+  date?: any
+  data?: any
 }
 
 
@@ -43,7 +45,7 @@ class CountdownShowcaseItems extends Component<Props, State> {
   public render():ReactNode {
 
     const {data, product:{date}}:any =  this.props;
-    const {product} = data;
+    const {product}:any = data;
 
     return(
       <CountdownShowcaseItem product={product} date={date}/>

@@ -7,8 +7,7 @@ import CountdownShowcaseItems from "./CountdownShowcaseItems";
 
 interface products {
   slug: string,
-  name: string,
-  price:number
+  date:string
 }
 
 interface Props {

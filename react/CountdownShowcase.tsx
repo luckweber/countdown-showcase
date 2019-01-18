@@ -90,7 +90,7 @@ class CountdownShowcase extends React.Component<Props, State> {
 
 
   public render():React.ReactNode {
-    const { text, products } =  this.props;
+    const { text, products }:any =  this.props;
     return(
       <div className="flex flex-grow-1 w-100 flex-column">
         <h1 className="center">{ text }</h1>
